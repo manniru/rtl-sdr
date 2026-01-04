@@ -1,0 +1,44 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "FM Radio",
+  "version": "0.1.0",
+  "identifier": "com.mannir.fm-radio",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "FM Radio - RTL-SDR",
+        "width": 520,
+        "height": 750,
+        "resizable": true,
+        "minWidth": 400,
+        "minHeight": 600,
+        "center": true,
+        "decorations": true,
+        "transparent": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "category": "Music",
+    "shortDescription": "FM Radio using RTL-SDR",
+    "longDescription": "A beautiful FM Radio application that uses RTL-SDR USB dongle to receive FM broadcasts"
+  }
+}

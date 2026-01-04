@@ -12,45 +12,58 @@ RTL-SDR (Software Defined Radio) project for macOS using the RTL2838UHIDIR USB d
 - **Frequency Range**: 24 MHz - 1.7 GHz
 - **Interface**: USB 2.0 (480 Mb/s)
 
-## Installed Tools
+## FM Radio App
 
-### Command Line
-- `librtlsdr` - RTL-SDR drivers and utilities (via Homebrew)
-- `sox` - Audio processing and playback
+A beautiful cross-platform FM Radio application built with Tauri + React + TypeScript.
 
-### GUI Application
-- **SDR++** v1.2.1 (nightly) - Located at `/Applications/SDR++.app`
+### Tech Stack
+- **Frontend**: React, TypeScript, Tailwind CSS v4
+- **Backend**: Rust (Tauri)
+- **Audio**: rtl_fm + sox
 
-## Common Commands
+### Development Commands
+```bash
+cd fm-radio
+
+# Install dependencies
+npm install
+
+# Run in development mode
+npm run tauri dev
+
+# Build production release
+npm run tauri build
+```
+
+### Project Structure
+```
+fm-radio/
+├── src/              # React frontend
+│   ├── App.tsx       # Main UI component
+│   └── App.css       # Tailwind + custom styles
+├── src-tauri/        # Rust backend
+│   ├── src/lib.rs    # Tauri commands (RTL-SDR control)
+│   └── Cargo.toml    # Rust dependencies
+└── package.json      # Node dependencies
+```
+
+## Command Line Tools
 
 ### Test RTL-SDR Device
 ```bash
 rtl_test -t
 ```
 
-### Listen to FM Radio (Command Line)
+### Listen to FM Radio (CLI)
 ```bash
 rtl_fm -f 100.0M -M wbfm -s 200000 -r 48000 - | play -r 48000 -t raw -e s -b 16 -c 1 -V1 -
-```
-- Replace `100.0M` with desired frequency (FM: 88-108 MHz)
-
-### Launch SDR++ GUI
-```bash
-open /Applications/SDR++.app
 ```
 
 ## Troubleshooting
 
 ### "Device claimed by another instance" Error
-Kill processes holding the device before launching SDR++:
 ```bash
 pkill -9 -f rtl_fm
 pkill -9 -f rtl_test
 pkill -9 -f sdrpp
 ```
-
-### SDR++ No Audio
-1. Select **RTL-SDR** as source (top-left dropdown)
-2. Click Play button
-3. Set Radio mode to **WFM** for FM stations
-4. In Audio section, select **Built-in Output**

@@ -7,3 +7,15 @@
 # Temporary files
 *.tmp
 *.log
+
+# Node.js
+node_modules/
+npm-debug.log*
+
+# Rust/Tauri
+fm-radio/src-tauri/target/
+fm-radio/dist/
+
+# IDE
+.vscode/
+.idea/

@@ -1,0 +1,258 @@
+@import "tailwindcss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #ffffff;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  min-height: 100vh;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Frequency display */
+.frequency-display {
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 4rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #00d9ff 0%, #00ff88 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 40px rgba(0, 217, 255, 0.5);
+  letter-spacing: -2px;
+}
+
+/* Custom range slider */
+.frequency-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+.frequency-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #00d9ff 0%, #00ff88 100%);
+  border-radius: 50%;
+  cursor: grab;
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.6), 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.frequency-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 30px rgba(0, 217, 255, 0.8), 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.frequency-slider::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.1);
+}
+
+.frequency-slider::-moz-range-thumb {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #00d9ff 0%, #00ff88 100%);
+  border-radius: 50%;
+  cursor: grab;
+  border: none;
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.6), 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Volume slider */
+.volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+  border-radius: 50%;
+  cursor: grab;
+  box-shadow: 0 0 15px rgba(255, 107, 107, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+  border-radius: 50%;
+  border: none;
+  cursor: grab;
+  box-shadow: 0 0 15px rgba(255, 107, 107, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Play button */
+.play-button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00d9ff 0%, #00ff88 100%);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(0, 217, 255, 0.4), 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.play-button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 50px rgba(0, 217, 255, 0.6), 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.play-button:active {
+  transform: scale(0.95);
+}
+
+.play-button.playing {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+  box-shadow: 0 0 30px rgba(255, 107, 107, 0.4), 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.play-button.playing:hover {
+  box-shadow: 0 0 50px rgba(255, 107, 107, 0.6), 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Preset button */
+.preset-button {
+  padding: 12px 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.preset-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(0, 217, 255, 0.5);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.preset-button.active {
+  background: linear-gradient(135deg, rgba(0, 217, 255, 0.2) 0%, rgba(0, 255, 136, 0.2) 100%);
+  border-color: rgba(0, 217, 255, 0.6);
+  color: #00d9ff;
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+}
+
+/* Signal indicator */
+.signal-bar {
+  width: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.signal-bar.active {
+  background: linear-gradient(180deg, #00ff88 0%, #00d9ff 100%);
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.5);
+}
+
+/* Visualizer bars */
+@keyframes visualizer {
+  0%, 100% { height: 20%; }
+  50% { height: 100%; }
+}
+
+.visualizer-bar {
+  width: 4px;
+  background: linear-gradient(180deg, #00d9ff 0%, #00ff88 100%);
+  border-radius: 2px;
+  animation: visualizer 0.5s ease-in-out infinite;
+}
+
+/* Glow effects */
+.glow-cyan {
+  box-shadow: 0 0 40px rgba(0, 217, 255, 0.3);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+}
+
+/* Status indicator */
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #4a4a4a;
+  transition: all 0.3s ease;
+}
+
+.status-dot.connected {
+  background: #00ff88;
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.6);
+}
+
+.status-dot.playing {
+  background: #00d9ff;
+  box-shadow: 0 0 12px rgba(0, 217, 255, 0.6);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.2); }
+}
+
+/* Frequency scale marks */
+.frequency-mark {
+  position: absolute;
+  bottom: -24px;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 500;
+}
