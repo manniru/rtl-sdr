@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Exported conversations
+*.txt
+
+# Temporary files
+*.tmp
+*.log
