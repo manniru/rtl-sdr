@@ -21,7 +21,7 @@ function App() {
   const [volume, setVolume] = useState(75);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
-  const [presets, setPresets] = useState<Preset[]>(DEFAULT_PRESETS);
+  const [presets] = useState<Preset[]>(DEFAULT_PRESETS);
   const [activePreset, setActivePreset] = useState<number | null>(null);
   const [signalStrength, setSignalStrength] = useState(0);
   const [visualizerBars, setVisualizerBars] = useState<number[]>(Array(20).fill(20));
